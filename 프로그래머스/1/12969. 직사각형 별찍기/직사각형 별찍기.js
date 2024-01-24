@@ -5,7 +5,5 @@ process.stdin.on('data', data => {
     
     for(let i = 1; i <= b; i++) {
        console.log(Array(a).fill("*").join("")); 
-    }
-    
-    
+    }    
 });
