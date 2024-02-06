@@ -1,0 +1,13 @@
+function solution(s) {
+  const sArr = s.split("");
+  const dap = sArr.map((str, idx) => {
+    let arr = [];
+    for (i = 0; i < idx; i++) {
+      arr.push(sArr[i]);
+    }
+    let newArr = arr.reverse();
+    let theIdx = newArr.findIndex((letter) => letter === str);
+    return theIdx === -1 ? theIdx : theIdx + 1;
+  });
+  return dap;
+}
