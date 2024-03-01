@@ -1,0 +1,44 @@
+function solution(answers) {
+  const aAnswer = [1, 2, 3, 4, 5];
+  const bAnswer = [2, 1, 2, 3, 2, 4, 2, 5];
+  const cAnswer = [3, 3, 1, 1, 2, 2, 4, 4, 5, 5];
+  const aList = Array(answers.length);
+  const bList = Array(answers.length);
+  const cList = Array(answers.length);
+
+  for (let i = 0; i < answers.length; i++) {
+    aList[i] = aAnswer[i % aAnswer.length];
+    bList[i] = bAnswer[i % bAnswer.length];
+    cList[i] = cAnswer[i % cAnswer.length];
+  }
+
+  let countA = 0;
+  let countB = 0;
+  let countC = 0;
+
+  for (let i = 0; i < answers.length; i++) {
+    if (answers[i] === aList[i]) {
+      countA++;
+    }
+    if (answers[i] === bList[i]) {
+      countB++;
+    }
+    if (answers[i] === cList[i]) {
+      countC++;
+    }
+  }
+
+  let arr = [];
+  const who = Math.max(countA, countB, countC); // 2
+  if (countA === who) {
+    arr.push(1);
+  }
+  if (countB === who) {
+    arr.push(2);
+  }
+  if (countC === who) {
+    arr.push(3);
+  }
+
+  return arr;
+}
