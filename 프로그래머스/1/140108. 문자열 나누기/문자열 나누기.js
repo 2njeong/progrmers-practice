@@ -1,31 +1,31 @@
 function solution(s) {
-    let answer = [];
-    let start = 0;
-    let count = 0;
-    let value = 0;
-    let otherValue = 0;
+let sArr = s.split("");
+let sCount = 0;
+let dCount = 0;
+let tCount = 0;
+let idx = 0;
 
-    for (let i = 0; i < s.length; i++) {
-        if (s[start] === s[i]) {
-            value += 1;
-        } else {
-            otherValue += 1;
-        }
-
-        if (value === otherValue) {
-            count += 1;
-            if (count == 1) {
-                answer.push(s.slice(start, i+1));
-                start = i + 1;
-                count = 0;
-                value = 0;
-                otherValue = 0;
-            }
-        }
+sArr.forEach((s) => {
+  if (sArr.indexOf(s) === 0) {
+    sCount++;
+  } else {
+    if (s !== sArr[sArr.indexOf(s) - 1]) {
+      dCount++;
+    } else {
+      sCount++;
     }
-    if (start < s.length && value !== otherValue) {
-        answer.push(s.slice(start));
-    }
-
-    return answer.length;
+  }
+  if (sCount === dCount) {
+    tCount++;
+    sCount = 0;
+    dCount = 0;
+    sArr = sArr.slice(idx + 1);
+    idx = 0;
+  }
+  if (sCount !== dCount && idx === sArr.length - 1) {
+    tCount++;
+  }
+  idx === 0 && sCount === 0 ? (idx = 0) : idx++;
+});
+return tCount;
 }
