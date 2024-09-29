@@ -1,7 +1,5 @@
 function solution(n, computers) {
-
 let netArr = [];
-
 computers.forEach((com, i) => {
   const alreadyNetSet = netArr.find((net) =>
     com.some((c, i) => c > 0 && net.has(i))
